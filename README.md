@@ -20,7 +20,7 @@ Welcome to the AI Landing Page project! This repository showcases an interactive
 
 ## Demo
 
-Check out the live demo [here](https://your-live-demo-link.com).
+Check out the live demo [here](https://sunme.netlify.app/).
 
 ## Preview
 
@@ -70,10 +70,8 @@ ai-landing-page/
 ├── index.html
 ├── server.js
 ├── package.json
+├── netlify.toml
 └── README.md
-
-
-
 
 ### Explanation:
 
