@@ -2,6 +2,9 @@
   async function getUserRegion() {
     try {
       const response = await fetch('https://ipinfo.io/json?token=5168a4827fc93b'); // Using the provided token
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       return data;
     } catch (error) {
@@ -11,12 +14,21 @@
   }
 
   function getUserLanguage() {
-    return navigator.language || navigator.userLanguage || 'en';
+    try {
+      const language = navigator.language || navigator.userLanguage || 'en';
+      return language;
+    } catch (error) {
+      console.error('Error fetching user language:', error);
+      return 'en';
+    }
   }
 
   async function fetchNews(country, language) {
     try {
       const response = await fetch(`/news?country=${country}&language=${language}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       return data;
     } catch (error) {
@@ -94,3 +106,76 @@
         e.preventDefault();
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  }
+
+  function initializeDebugWindow() {
+    const debugWindow = document.createElement('div');
+    debugWindow.id = 'debug-window';
+    debugWindow.style.cssText = `
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #0f0;
+      overflow-y: auto;
+      display: none;
+      z-index: 1001;
+      border: 1px solid #0f0;
+      padding: 10px;
+      font-size: 12px;
+    `;
+    document.body.appendChild(debugWindow);
+
+    const debugToggle = document.createElement('button');
+    debugToggle.id = 'debug-toggle';
+    debugToggle.textContent = 'Debug';
+    debugToggle.style.cssText = `
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1002;
+      background: #0f0;
+      color: #000;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    `;
+    document.body.appendChild(debugToggle);
+
+    debugToggle.addEventListener('click', () => {
+      debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
+    });
+
+    console.oldError = console.error;
+    console.error = function(message) {
+      const errorElement = document.createElement('div');
+      errorElement.className = 'debug-error';
+      errorElement.textContent = message;
+      debugWindow.appendChild(errorElement);
+      console.oldError.apply(console, arguments);
+    };
+
+    window.onerror = (message, source, lineno, colno, error) => {
+      const errorElement = document.createElement('div');
+      errorElement.className = 'debug-error';
+      errorElement.textContent = `Error: ${message} at ${source}:${lineno}:${colno}`;
+      debugWindow.appendChild(errorElement);
+    };
+  }
+
+  createNewsComponent();
+  initializeDebugWindow();
+})();
