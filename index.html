@@ -35,11 +35,16 @@
             border: 5px solid #0f0;
             border-top: 5px solid silver;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite, sparkle 1.5s infinite;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        @keyframes sparkle {
+            0% { box-shadow: 0 0 5px #fff; }
+            50% { box-shadow: 0 0 15px #fff; }
+            100% { box-shadow: 0 0 5px #fff; }
         }
         #matrix {
             position: fixed;
@@ -245,8 +250,8 @@
         const fish = document.getElementById('fish');
 
         try {
-            cat.style.backgroundImage = "url('assets/cat.gif')";  // Update to reference the cat GIF
-            fish.style.backgroundImage = "url('fish.gif')";
+            cat.style.backgroundImage = "url('assets/cat.webp')";  // Update to reference the cat GIF
+            fish.style.backgroundImage = "url('assets/pirate_fish.webp')";  // Update to reference the pirate fish GIF
 
             const randomPosition = (element) => {
                 element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
