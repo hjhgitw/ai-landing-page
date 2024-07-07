@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Landing Page</title>
     <link rel="stylesheet" href="news/styles.css">
-    <script src="news/newsFetcher.js"></script>
     <style>
         body, html {
             margin: 0;
@@ -237,26 +236,4 @@
         fish.style.backgroundImage = "url('fish.gif')";
 
         const randomPosition = (element) => {
-            element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
-            element.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-        };
-
-        const animateFlyingGifs = () => {
-            randomPosition(cat);
-            randomPosition(fish);
-        };
-
-        let gifInterval = setInterval(animateFlyingGifs, 5000);
-
-        // Debug window
-        const debugWindow = document.getElementById('debug-window');
-        const debugToggle = document.getElementById('debug-toggle');
-
-        debugToggle.addEventListener('click', () => {
-            debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
-        });
-
-        const logError = (error) => {
-            const errorElement = document.createElement('div');
-            errorElement.textContent = error;
-            debugWindow.appendChild
+            element.style.top = Math.random() * (
