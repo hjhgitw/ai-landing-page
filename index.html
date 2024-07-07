@@ -92,12 +92,16 @@
             padding: 10px;
             font-size: 12px;
         }
+        .debug-error {
+            color: red;
+            font-weight: bold;
+        }
         #debug-toggle {
             position: fixed;
             bottom: 10px;
             right: 10px;
             z-index: 1002;
-            background: rgba(0, 255, 0, 0.5);
+            background: #0f0;
             color: #000;
             border: none;
             padding: 10px;
@@ -116,10 +120,6 @@
             padding: 10px;
             cursor: pointer;
             margin-left: 5px;
-        }
-        .error {
-            color: red;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -261,9 +261,4 @@
 
         const logError = (error) => {
             const errorElement = document.createElement('div');
-            errorElement.classList.add('error');
-            errorElement.textContent = error;
-            debugWindow.appendChild(errorElement);
-        };
-
-        // Bind console.error
+            errorElement
