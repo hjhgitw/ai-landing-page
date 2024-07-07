@@ -56,16 +56,20 @@
     dragElement(newsFetcher);
 
     async function fetchNewsContent() {
-      const { country } = await getUserRegion();
-      const language = getUserLanguage();
-      const newsData = await fetchNews(country, language);
-      const newsContent = document.getElementById('news-content');
-      newsContent.innerHTML = '';
-      newsData.forEach(article => {
-        const articleDiv = document.createElement('div');
-        articleDiv.innerHTML = `<h3>${article.title}</h3><p>${article.description}</p>`;
-        newsContent.appendChild(articleDiv);
-      });
+      try {
+        const { country } = await getUserRegion();
+        const language = getUserLanguage();
+        const newsData = await fetchNews(country, language);
+        const newsContent = document.getElementById('news-content');
+        newsContent.innerHTML = '';
+        newsData.forEach(article => {
+          const articleDiv = document.createElement('div');
+          articleDiv.innerHTML = `<h3>${article.title}</h3><p>${article.description}</p>`;
+          newsContent.appendChild(articleDiv);
+        });
+      } catch (error) {
+        console.error('Error fetching news content:', error);
+      }
     }
 
     function dragElement(elmnt) {
@@ -131,35 +135,4 @@
       bottom: 10px;
       right: 10px;
       z-index: 1002;
-      background: #0f0;
-      color: #000;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    `;
-    document.body.appendChild(debugToggle);
-
-    debugToggle.addEventListener('click', () => {
-      debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
-    });
-
-    console.oldError = console.error;
-    console.error = function(message) {
-      const errorElement = document.createElement('div');
-      errorElement.className = 'debug-error';
-      errorElement.textContent = message;
-      debugWindow.appendChild(errorElement);
-      console.oldError.apply(console, arguments);
-    };
-
-    window.onerror = (message, source, lineno, colno, error) => {
-      const errorElement = document.createElement('div');
-      errorElement.className = 'debug-error';
-      errorElement.textContent = `Error: ${message} at ${source}:${lineno}:${colno}`;
-      debugWindow.appendChild(errorElement);
-    };
-  }
-
-  createNewsComponent();
-  initializeDebugWindow();
-})();
+      background: #0
