@@ -1,5 +1,3 @@
-# AI Landing Page
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +5,7 @@
     <meta name="google-adsense-account" content="ca-pub-7676441973228396">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Landing Page</title>
+    <link rel="stylesheet" href="news/styles.css">
     <style>
         body, html {
             margin: 0;
@@ -137,6 +136,17 @@
         <button id="stop-button">Stop</button>
         <button id="restart-button">Restart</button>
     </div>
+
+    <!-- Include the news fetcher component -->
+    <div id="news-fetcher" class="hidden">
+        <div id="news-header">
+            <button id="close-news">Close</button>
+            <h2>Latest News</h2>
+        </div>
+        <div id="news-content"></div>
+    </div>
+    <button id="open-news">Open News</button>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -144,7 +154,7 @@
 
   gtag('config', 'G-7CV8RSWDPM');
 </script>
-    <script src="https://illustrious-duckanoo-4c696a.netlify.app/newsFetcher.js"></script>
+    <script src="news/newsFetcher.js"></script>
 
     <script>
         // Helper function to generate random color
@@ -248,32 +258,4 @@
         const logError = (error) => {
             const errorElement = document.createElement('div');
             errorElement.textContent = error;
-            debugWindow.appendChild(errorElement);
-        };
-
-        // Bind console.error to debug window
-        console.oldError = console.error;
-        console.error = function(message) {
-            logError(message);
-            console.oldError.apply(console, arguments);
-        };
-
-        window.onerror = (message, source, lineno, colno, error) => {
-            logError(`Error: ${message} at ${source}:${lineno}:${colno}`);
-        };
-
-        // Control buttons
-        const stopButton = document.getElementById('stop-button');
-        const restartButton = document.getElementById('restart-button');
-
-        stopButton.addEventListener('click', () => {
-            clearInterval(matrixInterval);
-            clearInterval(gifInterval);
-        });
-
-        restartButton.addEventListener('click', () => {
-            window.location.reload();
-        });
-    </script>
-</body>
-</html>
+            debugWindow.appendChild
