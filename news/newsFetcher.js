@@ -103,5 +103,63 @@
     }
   }
 
+  function initializeDebugWindow() {
+    const debugWindow = document.createElement('div');
+    debugWindow.id = 'debug-window';
+    debugWindow.style.cssText = `
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #0f0;
+      overflow-y: auto;
+      display: none;
+      z-index: 1001;
+      border: 1px solid #0f0;
+      padding: 10px;
+      font-size: 12px;
+    `;
+    document.body.appendChild(debugWindow);
+
+    const debugToggle = document.createElement('button');
+    debugToggle.id = 'debug-toggle';
+    debugToggle.textContent = 'Debug';
+    debugToggle.style.cssText = `
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1002;
+      background: #0f0;
+      color: #000;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    `;
+    document.body.appendChild(debugToggle);
+
+    debugToggle.addEventListener('click', () => {
+      debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
+    });
+
+    console.oldError = console.error;
+    console.error = function(message) {
+      const errorElement = document.createElement('div');
+      errorElement.className = 'debug-error';
+      errorElement.textContent = message;
+      debugWindow.appendChild(errorElement);
+      console.oldError.apply(console, arguments);
+    };
+
+    window.onerror = (message, source, lineno, colno, error) => {
+      const errorElement = document.createElement('div');
+      errorElement.className = 'debug-error';
+      errorElement.textContent = `Error: ${message} at ${source}:${lineno}:${colno}`;
+      debugWindow.appendChild(errorElement);
+    };
+  }
+
   createNewsComponent();
+  initializeDebugWindow();
 })();
