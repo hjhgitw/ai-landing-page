@@ -236,7 +236,7 @@
         const cat = document.getElementById('cat');
         const fish = document.getElementById('fish');
 
-        cat.style.backgroundImage = "url('cat.gif')";
+        cat.style.backgroundImage = "url('assets/cat.gif')";  // Update to reference the cat GIF
         fish.style.backgroundImage = "url('fish.gif')";
 
         const randomPosition = (element) => {
@@ -256,9 +256,4 @@
         const debugToggle = document.getElementById('debug-toggle');
 
         debugToggle.addEventListener('click', () => {
-            debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
-        });
-
-        const logError = (error) => {
-            const errorElement = document.createElement('div');
-            errorElement
+            debugWindow.style.display = debugWindow
