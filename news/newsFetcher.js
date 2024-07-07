@@ -97,42 +97,4 @@
         pos3 = e.clientX;
         pos4 = e.clientY;
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-      }
-
-      function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-      }
-    }
-  }
-
-  function initializeDebugWindow() {
-    const debugWindow = document.createElement('div');
-    debugWindow.id = 'debug-window';
-    debugWindow.style.cssText = `
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-      height: 200px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #0f0;
-      overflow-y: auto;
-      display: none;
-      z-index: 1001;
-      border: 1px solid #0f0;
-      padding: 10px;
-      font-size: 12px;
-    `;
-    document.body.appendChild(debugWindow);
-
-    const debugToggle = document.createElement('button');
-    debugToggle.id = 'debug-toggle';
-    debugToggle.textContent = 'Debug';
-    debugToggle.style.cssText = `
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      z-index: 1002;
-      background: #0
+        elmnt.style.left = (elmnt
