@@ -5,6 +5,8 @@
     <meta name="google-adsense-account" content="ca-pub-7676441973228396">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Landing Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="news/styles.css">
     <style>
         body, html {
@@ -64,10 +66,6 @@
             font-size: 3em;
             text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
         }
-        #progress {
-            font-size: 2em;
-            margin-top: 20px;
-        }
         .flying {
             position: absolute;
             width: 100px;
@@ -91,11 +89,11 @@
             background: rgba(0, 0, 0, 0.8);
             color: #0f0;
             overflow-y: auto;
-            display: none;
             z-index: 1001;
             border: 1px solid #0f0;
             padding: 10px;
             font-size: 12px;
+            display: none;
         }
         .debug-error {
             color: red;
@@ -111,6 +109,7 @@
             border: none;
             padding: 10px;
             cursor: pointer;
+            display: none;
         }
         #control-buttons {
             position: fixed;
@@ -118,13 +117,43 @@
             right: 10px;
             z-index: 1002;
         }
-        #control-buttons button {
+        .material-button {
             background: #0f0;
             color: #000;
             border: none;
             padding: 10px;
             cursor: pointer;
             margin-left: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .material-button i {
+            font-size: 18px;
+        }
+        .material-button:hover {
+            background: #0c0;
+        }
+        #news-fetcher {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0f0;
+            overflow-y: auto;
+            z-index: 1003;
+            border: 1px solid #0f0;
+            padding: 10px;
+            font-size: 12px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #news-fetcher.visible {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -132,29 +161,38 @@
     <div id="loader"></div>
     <canvas id="matrix"></canvas>
     <div id="content">
-        <h1>Welcome to AI</h1>
-        <div id="progress">404 in progress... <span id="percentage">0%</span></div>
+        <h1><i class="fas fa-robot"></i> Welcome to AI</h1>
     </div>
 
     <div class="flying" id="cat"></div>
     <div class="flying" id="fish"></div>
 
     <div id="debug-window"></div>
-    <button id="debug-toggle">Debug</button>
+    <button id="debug-toggle" class="material-button">
+        <i class="material-icons">bug_report</i> Debug
+    </button>
     <div id="control-buttons">
-        <button id="stop-button">Stop</button>
-        <button id="restart-button">Restart</button>
+        <button id="stop-button" class="material-button">
+            <i class="material-icons">stop</i> Stop
+        </button>
+        <button id="restart-button" class="material-button">
+            <i class="material-icons">refresh</i> Restart
+        </button>
     </div>
 
     <!-- Include the news fetcher component -->
-    <div id="news-fetcher" class="hidden">
-        <div id="news-header">
-            <button id="close-news">Close</button>
-            <h2>Latest News</h2>
+    <div id="news-fetcher" class="visible">
+        <div id="news-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h2><i class="fas fa-newspaper"></i> Latest News</h2>
+            <button id="close-news" class="material-button">
+                <i class="material-icons">close</i> Close
+            </button>
         </div>
         <div id="news-content"></div>
     </div>
-    <button id="open-news">Open News</button>
+    <button id="open-news" class="material-button" style="position: fixed; bottom: 10px; left: 10px;">
+        <i class="fas fa-newspaper"></i> Open News
+    </button>
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -227,24 +265,6 @@
 
         let matrixInterval = setInterval(draw, 30);
 
-        // Progress animation
-        let progress = 0;
-        const progressElement = document.getElementById('percentage');
-
-        const updateProgress = () => {
-            try {
-                if (progress < 100) {
-                    progress++;
-                    progressElement.textContent = `${progress}%`;
-                    setTimeout(updateProgress, 100);
-                }
-            } catch (error) {
-                console.error('Error updating progress:', error);
-            }
-        };
-
-        setTimeout(updateProgress, 2000);
-
         // Flying Images
         const cat = document.getElementById('cat');
         const fish = document.getElementById('fish');
@@ -272,10 +292,6 @@
         const debugWindow = document.getElementById('debug-window');
         const debugToggle = document.getElementById('debug-toggle');
 
-        debugToggle.addEventListener('click', () => {
-            debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
-        });
-
         const logError = (error) => {
             const errorElement = document.createElement('div');
             errorElement.className = 'debug-error';
@@ -283,15 +299,23 @@
             debugWindow.appendChild(errorElement);
         };
 
-        // Bind console.error to debug window
+        debugToggle.addEventListener('click', () => {
+            debugWindow.style.display = debugWindow.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Bind console.error to debug window and automatically open on error
         console.oldError = console.error;
         console.error = function(message) {
             logError(message);
+            debugWindow.style.display = 'block';  // Auto-open debug window on error
+            debugToggle.style.display = 'block';  // Show debug toggle button
             console.oldError.apply(console, arguments);
         };
 
         window.onerror = (message, source, lineno, colno, error) => {
             logError(`Error: ${message} at ${source}:${lineno}:${colno}`);
+            debugWindow.style.display = 'block';  // Auto-open debug window on error
+            debugToggle.style.display = 'block';  // Show debug toggle button
         };
 
         // Control buttons
@@ -305,6 +329,19 @@
 
         restartButton.addEventListener('click', () => {
             window.location.reload();
+        });
+
+        // News fetcher control
+        const newsFetcher = document.getElementById('news-fetcher');
+        const openNewsButton = document.getElementById('open-news');
+        const closeNewsButton = document.getElementById('close-news');
+
+        openNewsButton.addEventListener('click', () => {
+            newsFetcher.classList.add('visible');
+        });
+
+        closeNewsButton.addEventListener('click', () => {
+            newsFetcher.classList.remove('visible');
         });
     </script>
     <!-- Add this line just before the closing </body> tag -->
