@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunMe News</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #login-button {
+            width: 50px;
+            height: 50px;
+            background: red;
+            background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(139,0,0,1) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #login-button:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1);
+        }
+
+        #login-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #login-modal input {
+            margin-bottom: 10px;
+        }
+
+        #login-modal button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #news-fetcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        #news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #news-content {
+            padding: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #open-news {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-button">🔑</div>
+    <div id="login-modal">
+        <h3>Enter API Key</h3>
+        <input type="text" id="api-key-input" placeholder="API Key">
+        <button id="save-key">Save</button>
+    </div>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', function() {
+            document.getElementById('login-modal').style.display = 'block';
+        });
+
+        document.getElementById('save-key').addEventListener('click', function() {
+            const apiKey = document.getElementById('api-key-input').value;
+            fetch('/api/set-key', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ key: apiKey })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                document.getElementById('login-modal').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7CV8RSWDPM');
+    </script>
+
+    <script src="newsFetcher.js"></script>
+</body>
+</html>
