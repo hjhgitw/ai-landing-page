@@ -1,4 +1,14 @@
-version: '3'
+.	Register a Custom Domain:
+Register a domain with any domain registrar (e.g., GoDaddy, Namecheap).
+	2.	Add Custom Domain to Netlify:
+	•	Go to your site on Netlify.
+	•	Navigate to “Domain settings” and add your custom domain.
+	3.	Update DNS Settings:
+	•	Point your domain to Netlify’s servers by updating the DNS records provided by Netlify.
+	4.	Update docker-compose.yml:
+Ensure your services are configured to use the custom domain:
+
+version: '3.8'
 
 services:
   app:
@@ -11,7 +21,7 @@ services:
       - NODE_ENV=production
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`app.sunme.netlify.app`)"
+      - "traefik.http.routers.app.rule=Host(`app.yourdomain.com`)"
       - "traefik.http.services.app.loadbalancer.server.port=3000"
 
   traefik:

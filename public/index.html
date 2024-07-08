@@ -1,21 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-7676441973228396">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Landing Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loader"></div>
+    <canvas id="matrix"></canvas>
+    <div id="content">
+        <h1><i class="fas fa-robot"></i> Welcome to AI</h1>
+        <div id="progress">Loading... <span id="percentage">0%</span></div>
+    </div>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Directory Listing</title>
-        <style>
-            body { font-family: Arial, sans-serif; padding: 20px; }
-            ul { list-style-type: none; }
-            li { margin: 5px 0; }
-        </style>
-    </head>
-    <body>
-        <h1>Directory Listing</h1>
-        <ul>
-            <li><a href="README.md">README.md</a></li>
-        </ul>
-    </body>
-    </html>
-    
+    <div class="flying" id="cat"></div>
+    <div class="flying" id="fish"></div>
+
+    <div id="debug-window"></div>
+    <button id="debug-toggle" class="material-button">
+        <i class="material-icons">bug_report</i> Debug
+    </button>
+    <div id="control-buttons">
+        <button id="stop-button" class="material-button">
+            <i class="material-icons">stop</i> Stop
+        </button>
+        <button id="restart-button" class="material-button">
+            <i class="material-icons">refresh</i> Restart
+        </button>
+        <button id="login-toggle" class="material-button">
+            <i class="material-icons">login</i> Login
+        </button>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-box" class="modal">
+        <div class="modal-content">
+            <span id="login-close" class="close">&times;</span>
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="login-button">Login</button>
+        </div>
+    </div>
+
+    <!-- Include the news fetcher component -->
+    <div id="news-fetcher" class="visible">
+        <div id="news-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h2><i class="fas fa-newspaper"></i> Latest News</h2>
+            <button id="close-news" class="material-button">
+                <i class="material-icons">close</i> Close
+            </button>
+        </div>
+        <div id="news-content"></div>
+    </div>
+    <button id="open-news" class="material-button" style="position: fixed; bottom: 10px; left: 10px;">
+        <i class="fas fa-newspaper"></i> Open News
+    </button>
+
+    <script src="matrix.js"></script>
+    <script src="script.js"></script>
+    <script src="news/newsFetcher.js" onerror="console.error('Error loading newsFetcher.js')"></script>
+</body>
+</html>

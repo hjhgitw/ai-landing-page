@@ -1,0 +1,130 @@
+
+────────────────────────────┐
+ Current Netlify Sites    │
+────────────────────────────┘
+
+Count: 27
+
+celadon-crumble-fbe089 - a74379c5-224b-4ded-a220-e20b1d627734
+  url:  https://celadon-crumble-fbe089.netlify.app
+  repo: https://github.com/hjhgitw/oauth-app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+illustrious-tiramisu-c0c72b - 201788d9-4d4e-4561-8254-c2a12d97d761
+  url:  https://illustrious-tiramisu-c0c72b.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+verdant-llama-1c8cb1 - 1d93d417-4acb-44b8-92e1-f78dbb47a059
+  url:  https://verdant-llama-1c8cb1.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+keen-pony-31a728 - c6c43d98-7e67-4eb5-8987-db74475da669
+  url:  https://keen-pony-31a728.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+profound-babka-9fc8d5 - d1d88c54-6af6-468c-b147-650a1fd170d4
+  url:  https://profound-babka-9fc8d5.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+gtpb - 1444afdd-4226-45bf-9dce-46e7e03ab8bb
+  url:  https://gtpb.netlify.app
+  repo: https://github.com/hjhgitw/pastebin
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+glowing-llama-020a78 - 0b01ab22-1e84-4be6-9803-f8ce3d060284
+  url:  https://glowing-llama-020a78.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+imaginative-shortbread-536c97 - 592da3d3-22d2-4b14-a3b0-aa7f144d0884
+  url:  https://imaginative-shortbread-536c97.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+velvety-starburst-3bd9e8 - b979f577-eafc-4649-8dae-8cc7856b0adb
+  url:  https://velvety-starburst-3bd9e8.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+sunny-gnome-032b99 - 2fdc1b4b-a5d6-418e-bd2f-1a13c3d76ea4
+  url:  https://sunny-gnome-032b99.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+bejewelled-dolphin-f4ccba - d13bbe4e-ace8-4b65-8a7d-5fbb230dd96f
+  url:  https://bejewelled-dolphin-f4ccba.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+dnshob - 08af3d5f-5f68-4889-9e94-2ff93d3e5048
+  url:  https://dnshob.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+luminous-stardust-6d4ca5 - 0462d5ee-8537-4613-a52d-19d0547fe47f
+  url:  https://luminous-stardust-6d4ca5.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+sunny-otter-23f7cb - 2c066878-677b-47c5-abbd-c7db9830feaa
+  url:  https://sunny-otter-23f7cb.netlify.app
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+sunme - 17e5d614-d121-4c2d-b5be-618a7c638763
+  url:  https://sunme.netlify.app
+  repo: https://github.com/hjhgitw/ai-landing-page
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+timely-empanada-1c3678 - d6908d15-5382-4c50-8e27-b5f0359152c4
+  url:  https://timely-empanada-1c3678.netlify.app
+  repo: https://github.com/hjhgitw/gatsby-starter-netlify-cms
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+clever-kitten-76a10c - 01320301-cb00-4cd2-93dd-507129d78f59
+  url:  https://clever-kitten-76a10c.netlify.app
+  repo: https://github.com/hjhgitw/hugo-remix-one-click-netlify-cms
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+jocular-granita-f6449c - e8f1fbca-ba24-4704-b173-987eedbd6d14
+  url:  https://jocular-granita-f6449c.netlify.app
+  repo: https://github.com/hjhgitw/bluise
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+extraordinary-centaur-4a7c25 - 64739f36-d351-46b0-8edf-e79235bed406
+  url:  https://extraordinary-centaur-4a7c25.netlify.app
+  repo: https://github.com/hjhgitw/astro-quickstart
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+wonderful-edison-323d8c - 636ea622-9d2e-4ba0-a5e6-dda2f26f8d60
+  url:  https://wonderful-edison-323d8c.netlify.app
+  repo: https://github.com/hjhgitw/one-click-hugo-cms
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+boring-beaver-0285ba - b2ef8d9a-d370-44e9-8952-534421dd39b6
+  url:  https://boring-beaver-0285ba.netlify.app
+  repo: https://github.com/hjhgitw/react-static-starter
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+flamboyant-mcnulty-a6196b - bc40e1da-72b7-461c-8ee3-10d7f0bdfd9c
+  url:  https://flamboyant-mcnulty-a6196b.netlify.app
+  repo: https://github.com/hjhgitw/next-netlify-starter
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+tarif-wechseln - a0b80324-a188-4c62-8f92-72f507bcfe70
+  url:  https://4w1n.de
+  repo: https://github.com/hjhgitw/tarif-wechsel
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+help-scout - 339f1598-9595-4b4a-970b-abdb943a7f83
+  url:  https://help-scout.netlify.app
+  repo: https://github.com/hjhgitw/hscout-auth-react
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+jolly-tesla-df6559 - 058c4a38-0577-4cc4-b02f-e2eeb6917015
+  url:  https://jolly-tesla-df6559.netlify.app
+  repo: https://github.com/hjhgitw/react-app-netlify-help-trello
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+objective-chandrasekhar-96c338 - 27eefc4a-2b77-4406-bec9-5e880a797287
+  url:  https://objective-chandrasekhar-96c338.netlify.app
+  repo: https://github.com/hjhgitw/help-scout-2
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────
+heuristic-goldstine-097cef - 9cf47b73-0f2a-41f6-ad98-c0778e2605dd
+  url:  https://heuristic-goldstine-097cef.netlify.app
+  repo: https://github.com/hjhgitw/weather-power-up
+  account: Hansjörg Hofer’s team
+─────────────────────────────────────────────────

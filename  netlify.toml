@@ -1,0 +1,19 @@
+[build]
+  publish = "public"
+  command = "npm run build"
+
+[context.production.environment]
+  GITHUB_CLIENT_ID = "0v23IiH90D4WfttLs8g1g"
+  GITHUB_CLIENT_SECRET = "501412e4c03ba253d13daa0998af8dba780f257d"
+  REDIRECT_URI = "https://ipflag.4w1n.de/auth/callback"
+  YOUTUBE_CLIENT_ID = "your_youtube_client_id"
+  YOUTUBE_CLIENT_SECRET = "your_youtube_client_secret"
+
+  [[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs.settings]
+    preset = "desktop" # For desktop configuration
+
+  [plugins.inputs.settings]
+    locale = "en" # For English language reports
