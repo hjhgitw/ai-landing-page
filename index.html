@@ -1,5 +1,3 @@
-# AI Landing Page
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +116,29 @@
             cursor: pointer;
             margin-left: 5px;
         }
+        #login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 1px solid #0f0;
+            display: none;
+        }
+        #login-box input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+        #login-box button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -127,23 +148,20 @@
         <h1>Welcome to AI</h1>
         <div id="progress">404 in progress... <span id="percentage">0%</span></div>
     </div>
-
     <div class="flying" id="cat"></div>
     <div class="flying" id="fish"></div>
-
+    <div id="login-box">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="login-button">Login</button>
+    </div>
     <div id="debug-window"></div>
     <button id="debug-toggle">Debug</button>
     <div id="control-buttons">
         <button id="stop-button">Stop</button>
         <button id="restart-button">Restart</button>
+        <button id="login-toggle">Login</button>
     </div>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7CV8RSWDPM');
-</script>
     <script>
         // Helper function to generate random color
         function getRandomColor() {
@@ -249,29 +267,4 @@
             debugWindow.appendChild(errorElement);
         };
 
-        // Bind console.error to debug window
-        console.oldError = console.error;
-        console.error = function(message) {
-            logError(message);
-            console.oldError.apply(console, arguments);
-        };
-
-        window.onerror = (message, source, lineno, colno, error) => {
-            logError(`Error: ${message} at ${source}:${lineno}:${colno}`);
-        };
-
-        // Control buttons
-        const stopButton = document.getElementById('stop-button');
-        const restartButton = document.getElementById('restart-button');
-
-        stopButton.addEventListener('click', () => {
-            clearInterval(matrixInterval);
-            clearInterval(gifInterval);
-        });
-
-        restartButton.addEventListener('click', () => {
-            window.location.reload();
-        });
-    </script>
-</body>
-</html>
+        //
