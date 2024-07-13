@@ -1,7 +1,7 @@
 (function() {
   async function getUserRegion() {
     try {
-      const response = await fetch('https://ipinfo.io/json?token=YOUR_IPINFO_TOKEN'); // Replace with your ipinfo.io token
+      const response = await fetch('https://ipinfo.io/json?token=5168a4827fc93b'); // Using the provided token
       const data = await response.json();
       return data;
     } catch (error) {
@@ -89,4 +89,19 @@
         e = e || window.event;
         e.preventDefault();
         pos1 = pos3 - e.clientX;
-        pos
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  }
+
+  createNewsComponent();
+})();
